@@ -55,6 +55,23 @@ namespace Lab28.Controllers
 
         }
 
+        public List<Movy> GetRandomMovieList(int length)
+        {
+            MovieDBEntities ORM = new MovieDBEntities();
+
+            Random rand = new Random();
+
+            List<Movy> movieList = ORM.Movies.ToList();
+            List<Movy> randomList = new List<Movy>();
+            int index = 0;
+            while (length > index)
+            {
+                randomList.Add(movieList[rand.Next(movieList.Count)]);
+                index++;
+            }
+            return randomList;
+        }
+
         //ToDo: Finish this
         public List<Movy> ListMovieInfo(string title)
         {
