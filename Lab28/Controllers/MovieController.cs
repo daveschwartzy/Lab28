@@ -50,8 +50,9 @@ namespace Lab28.Controllers
 
             List<Movy> GenreList = ORM.Movies.Where(x => x.Genre.ToLower() == genre.ToLower()).ToList();
 
-
-            return GenreList[rand.Next(GenreList.Count())];
+            int y = rand.Next(GenreList.Count());
+            if (y == 0) return new Movy();
+            return GenreList[y];
 
         }
 
